@@ -7,7 +7,7 @@ const path = require('path');
 dotenv.config();
 const app = express();
 
-app.use(cors({ origin: 'http://localhost:4200' }));
+app.use(cors({ origin: '*' }));
 app.use(
     helmet({
       crossOriginEmbedderPolicy: false,

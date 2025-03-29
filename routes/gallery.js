@@ -23,7 +23,7 @@ router.post('/upload/gallery', upload.single('image'), (req, res) => {
   console.log(req.body)
   if (!req.file) return res.status(400).send('No file uploaded');
 
-  const imageurl = `http://localhost:5000/uploads/gallery/${req.file.filename}`;
+  const imageurl = `https://naishuruwat-backend.onrender.com/uploads/gallery/${req.file.filename}`;
   res.json({ imageurl, caption });
 });
 

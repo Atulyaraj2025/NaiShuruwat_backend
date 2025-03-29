@@ -23,7 +23,7 @@ const upload = multer({ storage });
 router.post('/:type', upload.single('image'), (req, res) => {
   if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
 
-  const url = `http://localhost:5000/uploads/${req.params.type}/${req.file.filename}`;
+  const url = `https://naishuruwat-backend.onrender.com/uploads/${req.params.type}/${req.file.filename}`;
   res.json({ message: 'Uploaded', imageUrl: url });
 });
 

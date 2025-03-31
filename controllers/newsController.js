@@ -1,4 +1,5 @@
 // controllers/newsController.js
+const pool = require('../models/db');
 
 exports.createNews = async (req, res) => {
   const { title, imageUrl, content, active = true } = req.body;

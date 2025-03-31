@@ -10,11 +10,11 @@ exports.getActiveInitiatives = async (req, res) => {
 };
 
 exports.createInitiative = async (req, res) => {
-  const { title, content, imageUrl, active } = req.body;
+  const { title, content, imageUrl, active = true } = req.body;
   try {
     const result = await pool.query(
-      'INSERT INTO initiatives (title, content, imageUrl, active) VALUES ($1, $2, $3, $4) RETURNING *',
-      [title, content, imageUrl, active ?? true]
+      'INSERT INTO initiatives (title, content, imageurl, active) VALUES ($1, $2, $3, $4) RETURNING *',
+      [title, content, imageUrl, active]
     );
     res.status(201).json({ message: 'Initiative added', data: result.rows[0] });
   } catch (err) {

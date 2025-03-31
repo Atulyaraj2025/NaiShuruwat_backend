@@ -10,13 +10,13 @@ exports.getActiveNews = async (req, res) => {
 };
 
 exports.createNews = async (req, res) => {
-  const { title, imageUrl, active } = req.body;
+  const { title, imageUrl, active = true } = req.body;
   try {
     const result = await pool.query(
-      'INSERT INTO news (title, imageUrl, active) VALUES ($1, $2, $3) RETURNING *',
-      [title, imageUrl, active ?? true]
+      'INSERT INTO news (title, imageurl, active) VALUES ($1, $2, $3) RETURNING *',
+      [title, imageUrl, active]
     );
-    res.status(201).json({ message: 'News uploaded', data: result.rows[0] });
+    res.status(201).json({ message: 'News added', data: result.rows[0] });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

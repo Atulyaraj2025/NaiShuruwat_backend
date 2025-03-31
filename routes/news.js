@@ -3,6 +3,6 @@ const router = express.Router();
 const { getActiveNews, createNews } = require('../controllers/newsController');
 
 router.get('/', getActiveNews);
-router.post('/', createNews); // secure with frontend
+router.post('/', createNews);
 
 module.exports = router;

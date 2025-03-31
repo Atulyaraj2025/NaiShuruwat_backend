@@ -1,6 +1,6 @@
 const pool = require('../models/db');
 
-exports.getActiveBlogs = async (req, res) => {
+exports.getBlogs = async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM blogs WHERE active = true ORDER BY created_at DESC');
     res.json(result.rows);
@@ -10,13 +10,13 @@ exports.getActiveBlogs = async (req, res) => {
 };
 
 exports.createBlog = async (req, res) => {
-  const { title, content, active } = req.body;
+  const { title, content, active = true } = req.body;
   try {
     const result = await pool.query(
       'INSERT INTO blogs (title, content, active) VALUES ($1, $2, $3) RETURNING *',
-      [title, content, active ?? true]
+      [title, content, active]
     );
-    res.status(201).json({ message: 'Blog created', data: result.rows[0] });
+    res.status(201).json({ message: 'Blog added', data: result.rows[0] });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

@@ -3,7 +3,7 @@ const router = express.Router();
 const { checkAdmin } = require('../controllers/adminAuthController');
 
 // router.post('/', checkAdmin);
-const adminEmails = ['admin@gmail.com', 'rajatulya2000r@gmail.com'];
+const adminEmails = ['admin@gmail.com', 'rajatulya2000r@gmail.com','amulyabhai@gmail.com'];
 
 router.post('/', (req, res) => {
   const { email } = req.body;
